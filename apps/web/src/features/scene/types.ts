@@ -1,6 +1,7 @@
 export type SceneObjectId = string;
-export type SceneObjectKind = "scan" | "crown" | "auxiliary";
+export type SceneObjectKind = "scan" | "restoration" | "auxiliary";
 export type SceneObjectSource = "dataset" | "upload";
+export type RestorationType = "crown" | "bridge" | "interim";
 
 export interface SceneObjectVisualState {
   visible: boolean;
@@ -18,6 +19,8 @@ export interface SceneObject {
   name: string;
   fileName: string;
   kind: SceneObjectKind;
+  /** Set when `kind` is "restoration". */
+  restorationType: RestorationType | null;
   source: SceneObjectSource;
   url: string;
   textureUrl: string | null;

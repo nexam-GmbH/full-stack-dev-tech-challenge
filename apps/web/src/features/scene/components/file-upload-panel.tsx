@@ -10,7 +10,8 @@ export function FileUploadPanel() {
       <CardContent className="space-y-3 px-3 pb-3">
         {/* TODO:
             Implement your file upload field here.
-            Expected scope: drag-and-drop + manual selection for STL files.
+            Expected scope: drag-and-drop + manual selection for STL/PLY files,
+            with each file marked as scan or restoration (crown, bridge or interim).
         */}
         <div className="rounded-md border-2 border-dashed border-slate-300 bg-slate-50/70 p-4">
           <p className="text-sm font-medium text-slate-900">

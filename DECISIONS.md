@@ -12,11 +12,14 @@ Use this document to explain your engineering choices and tradeoffs.
 - How did you ensure unrestricted rotation, predictable pan/zoom, and mobile usability?
 - How did you avoid visual artifacts (for example unintended back-side transparency)?
 
-## 3) Crown Placement Algorithm
+## 3) Restoration Placement Algorithm
 
 - Which automated method did you choose?
 - Why is it a reasonable practical choice for this challenge?
 - What are the algorithm stages?
+- What is shared across crowns, bridges and interim prostheses, and what is type-specific?
+- Bridges: how do you fit all abutments at once, and how do you treat the pontic areas?
+- Interim prostheses: which surfaces drive the fit when there is no prepared stump?
 
 ## 4) Handling Noisy Scan Data
 
@@ -24,7 +27,8 @@ Use this document to explain your engineering choices and tradeoffs.
 
 ## 5) Validation Strategy
 
-- How did you validate placement quality across all 5 cases?
+- How did you validate placement quality across all provided cases of each restoration type?
+- How do you judge fit quality for interim prostheses, where `± 0.2 mm` does not apply?
 
 ## 6) Product and UX Decisions
 
@@ -39,6 +43,7 @@ Use this document to explain your engineering choices and tradeoffs.
 ## 8) Known Failure Modes
 
 - Where do you expect your method or viewer to fail?
+- Which restoration type is the least reliable with your approach, and why?
 
 ## 9) Notes for Reviewers
 

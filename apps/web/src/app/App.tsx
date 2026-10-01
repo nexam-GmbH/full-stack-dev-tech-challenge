@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { PlacementPanel } from "../features/placement/components/placement-panel";
-import { runCrownPlacement } from "../features/placement/run-crown-placement";
+import { runRestorationPlacement } from "../features/placement/run-restoration-placement";
 import type { PlacementRunState } from "../features/placement/types";
 import { FileUploadPanel } from "../features/scene/components/file-upload-panel";
 import { useSceneState } from "../features/scene/hooks/use-scene-state";
@@ -20,13 +20,15 @@ export function App() {
 
   const handleRunPlacement = async () => {
     const scanObject = objects.find((object) => object.kind === "scan");
-    const crownObject = objects.find((object) => object.kind === "crown");
+    const restorationObject = objects.find(
+      (object) => object.kind === "restoration",
+    );
 
-    if (!scanObject || !crownObject) {
+    if (!scanObject || !restorationObject?.restorationType) {
       setPlacementState({
         status: "error",
         message:
-          "A scan and a crown object must both be present before running placement.",
+          "A scan and a restoration object (crown, bridge or interim) must both be present before running placement.",
       });
       return;
     }
@@ -37,9 +39,10 @@ export function App() {
     });
 
     try {
-      const result = await runCrownPlacement({
+      const result = await runRestorationPlacement({
         scanObject,
-        crownObject,
+        restorationObject,
+        restorationType: restorationObject.restorationType,
         sceneObjects: objects,
       });
 
@@ -67,7 +70,7 @@ export function App() {
       <header className="border-b border-slate-300/70 bg-white/85 backdrop-blur">
         <div className="w-full px-4 py-3 sm:px-6">
           <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">
-            Dental Crown Placement and 3D Viewer
+            Dental Restoration Placement and 3D Viewer
           </h1>
         </div>
       </header>

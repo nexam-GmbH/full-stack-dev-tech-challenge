@@ -1,13 +1,14 @@
-import type { SceneObject } from "../scene/types";
+import type { RestorationType, SceneObject } from "../scene/types";
 
-export interface CrownPlacementInput {
+export interface RestorationPlacementInput {
   scanObject: SceneObject;
-  crownObject: SceneObject;
+  restorationObject: SceneObject;
+  restorationType: RestorationType;
   sceneObjects: SceneObject[];
 }
 
-export interface CrownPlacementResult {
-  crownObjectId: string;
+export interface RestorationPlacementResult {
+  restorationObjectId: string;
   transformMatrix: number[];
   diagnostics: string[];
 }
